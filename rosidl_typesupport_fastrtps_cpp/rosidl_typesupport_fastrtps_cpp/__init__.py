@@ -15,10 +15,14 @@
 from rosidl_cmake import generate_files
 
 
-def generate_cpp(generator_arguments_file):
-    mapping = {
+def get_template_mapping():
+    return {
         'idl__rosidl_typesupport_fastrtps_cpp.hpp.em':
         'detail/%s__rosidl_typesupport_fastrtps_cpp.hpp',
         'idl__type_support.cpp.em': 'detail/dds_fastrtps/%s__type_support.cpp',
     }
+
+
+def generate_cpp(generator_arguments_file):
+    mapping = get_template_mapping()
     return generate_files(generator_arguments_file, mapping)
